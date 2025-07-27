@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import React from 'react';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 function AddItemButton() {
   const router = useRouter();
@@ -30,36 +32,29 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2500); // shorter loading
+    const timer = setTimeout(() => setLoading(false), 2500);
     return () => clearTimeout(timer);
   }, []);
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-blue-950 text-cyan-400 text-4xl font-bold">
+      <div className="min-h-screen flex items-center justify-between bg-blue text-cyan-400 text-4xl font-bold">
         <div>Loading...</div>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-blue-950 bg-[radial-gradient(circle_at_center,_rgba(60,128,248,0.11)_0%,_transparent_90%)] relative">
-      
+    <div className="flex flex-col justify-between min-h-screen bg-blue bg-[radial-gradient(circle_at_center,_rgba(205,222,252,0.17)_0%,_transparent_90%)] relative">
       
       {/* Navbar */}
-      <div className="absolute top-6 z-20 w-full flex justify-center">
-        <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-full px-6 py-2 flex gap-6 shadow-lg text-sm sm:text-base">
-          <Link href="/about" className="flex items-center gap-1 hover:underline font-extrabold text-cyan-400">
-            <Info size={18} /> About
-          </Link>
-          <Link href="/contact" className="flex items-center gap-1 hover:underline font-extrabold text-cyan-400">
-            <Mail size={18} /> Contact
-          </Link>
-        </div>
+      <div className="absolute top-6 z-20 w-full flex text-white gap-8 justify-center">
+        <button className="buttonn">Contact Us</button>
+        <button className="buttonn">About Health+</button>
       </div>
 
       {/* Main Content */}
-      <main className="flex-grow flex flex-col items-center justify-center text-center px-6 space-y-6 z-10">
+      <main className="flex flex-1 flex-col items-center justify-center text-center px-6 space-y-6 z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -71,14 +66,20 @@ export default function Home() {
             <span className="text-green-700">.</span>
           </h1>
 
-          
-
-          <div className="mt-4 flex justify-center items-center">
+          <div className="flex justify-center items-center">
             <AddItemButton />
           </div>
-        </motion.div>
-        
 
+          <div className="flex justify-center items-center">
+            <DotLottieReact
+              src="https://lottie.host/cd3d22f5-4d6c-4874-bda8-6e3c8be9a5c6/YT3tqLApVb.lottie"
+              loop
+              autoplay
+              style={{ width: '300px', height: '300px' }}
+            />
+          </div>
+          <h2>Choose a healthier tomorrow!</h2>
+        </motion.div>
       </main>
 
       {/* Footer */}

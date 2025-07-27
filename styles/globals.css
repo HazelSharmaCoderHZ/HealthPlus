@@ -183,8 +183,9 @@ body {
   cursor: pointer;
   display: flex;
   align-items: center;
-  border: 1px solid #34974d;
-  background-color: #3aa856;
+  border: solid  rgba(19, 247, 3, 0.269);
+  background-color: rgba(11, 11, 11, 0.5);
+  backdrop-filter: blur(5px);
 }
 
 .button, .button__icon, .button__text {
@@ -199,7 +200,7 @@ body {
 
 .button .button__icon {
   position: absolute;
-  transform: translateX(109px);
+  transform: translateX(101px);
   height: 100%;
   width: 39px;
   background-color: #34974d;
@@ -223,7 +224,7 @@ body {
 
 .button:hover .button__icon {
   width: 148px;
-  transform: translateX(0);
+  transform: translateX(-7px);
 }
 
 .button:active .button__icon {
@@ -375,6 +376,74 @@ body {
   100% {
     opacity: 0;
   }
+}
+
+.buttonn {
+  display: inline-block;
+  
+  padding: 9px 9px;
+  border: 2px  white;
+  background-color: rgba(11, 11, 11, 0.5);
+  backdrop-filter: blur(5px);
+  border-radius: 24px;
+  transition: all 0.2s ease-in;
+  position: relative;
+  overflow: hidden;
+  font-size: 15px bold;
+  cursor: pointer;
+  color: rgb(253, 254, 254);
+  /* margin-right: 2px; */
+  z-index: 1;
+}
+
+.buttonn:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.25);
+  top: 100%;
+  width: 140%;
+  height: 180%;
+  background-color:rgba(244, 238, 238, 0.05);
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.buttonn:after {
+  opacity: 100%;
+  content: "";
+  position: absolute;
+  left: 55%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.45);
+  top: 180%;
+  width: 160%;
+  height: 190%;
+  background-color: #2e8644;
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.buttonn:hover {
+  opacity: 100%;
+  color: #ffffff;
+  border: 1px solid #2e8644;
+}
+
+.buttonn:hover:before {
+  top: -35%;
+  background-color: #2e8644;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.buttonn:hover:after {
+  opacity: 100%;
+  top: -45%;
+  background-color: #2e8644;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
 }
 
 
