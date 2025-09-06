@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 
@@ -11,6 +11,21 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [err, setErr] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  
+  const [showLoader, setShowLoader] = useState(true);
+
+  useEffect(() => {
+  let mounted = true;
+
+  const timer = setTimeout(() => {
+    if (mounted) setShowLoader(false);
+  }, 3000);
+
+  return () => {
+    mounted = false;
+    clearTimeout(timer);
+  };
+}, []);
 
   const handleEmailLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,6 +53,220 @@ export default function LoginPage() {
       setBusy(false);
     }
   };
+
+  if (showLoader) {
+    return (
+     <div className="flex  flex-col md:flex-row"> 
+    <div className="flex items-center  justify-center h-screen w-screen ">
+      <svg
+        width="480"
+        height="480"
+        viewBox="-5 -5 40 40"
+        xmlns="http://www.w3.org/2000/svg"
+        className="drop-shadow-[0_0_10px_rgba(0,0,0,0.5)]"
+      >
+        <defs>
+          <filter id="glow" x="-50%" y="-50%" width="400%" height="400%">
+            <feGaussianBlur stdDeviation="2" result="blur"></feGaussianBlur>
+            <feMerge>
+              <feMergeNode in="blur"></feMergeNode>
+              <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+          </filter>
+        </defs>
+
+        
+        <circle fill="#ffffffff" r="0.1" filter="url(#glow)">
+          <animateMotion
+            path="M 23.8 0.5 C 17.5 -1.4 1.4 20.9 9.9 27.3 C 14.2 30.5 21.9 22.9 23.8 17.8 C 28 7 2.1 3.3 0.4 11.6 C -0.4 15.9 10 18.3 12.6 18.7 C 25.2 20.5 31.5 2.9 23.8 0.5 Z"
+            repeatCount="indefinite"
+            dur="3.5s"
+          />
+        </circle>
+        <circle fill="#b599caff" r="0.15" filter="url(#glow)">
+          <animateMotion
+            path="M 23.8 0.5 C 17.5 -1.4 1.4 20.9 9.9 27.3 C 14.2 30.5 21.9 22.9 23.8 17.8 C 28 7 2.1 3.3 0.4 11.6 C -0.4 15.9 10 18.3 12.6 18.7 C 25.2 20.5 31.5 2.9 23.8 0.5 Z"
+            repeatCount="indefinite"
+            begin="-0.05s"
+            dur="3.5s"
+          />
+        </circle>
+        <circle fill="#925bbeff" r="0.2" filter="url(#glow)">
+          <animateMotion
+            path="M 23.8 0.5 C 17.5 -1.4 1.4 20.9 9.9 27.3 C 14.2 30.5 21.9 22.9 23.8 17.8 C 28 7 2.1 3.3 0.4 11.6 C -0.4 15.9 10 18.3 12.6 18.7 C 25.2 20.5 31.5 2.9 23.8 0.5 Z"
+            repeatCount="indefinite"
+            begin="-0.1s"
+            dur="3.5s"
+          />
+        </circle>
+        <circle fill="#68e8a3ff" r="0.25" filter="url(#glow)">
+          <animateMotion
+            path="M 23.8 0.5 C 17.5 -1.4 1.4 20.9 9.9 27.3 C 14.2 30.5 21.9 22.9 23.8 17.8 C 28 7 2.1 3.3 0.4 11.6 C -0.4 15.9 10 18.3 12.6 18.7 C 25.2 20.5 31.5 2.9 23.8 0.5 Z"
+            repeatCount="indefinite"
+            begin="-0.15s"
+            dur="3.5s"
+          />
+        </circle>
+        <circle fill="#00ffaeff" r="0.3" filter="url(#glow)">
+          <animateMotion
+            path="M 23.8 0.5 C 17.5 -1.4 1.4 20.9 9.9 27.3 C 14.2 30.5 21.9 22.9 23.8 17.8 C 28 7 2.1 3.3 0.4 11.6 C -0.4 15.9 10 18.3 12.6 18.7 C 25.2 20.5 31.5 2.9 23.8 0.5 Z"
+            repeatCount="indefinite"
+            begin="-0.2s"
+            dur="3.5s"
+          />
+        </circle>
+        <circle fill="#00b7eb" r="0.35" filter="url(#glow)">
+          <animateMotion
+            path="M 23.8 0.5 C 17.5 -1.4 1.4 20.9 9.9 27.3 C 14.2 30.5 21.9 22.9 23.8 17.8 C 28 7 2.1 3.3 0.4 11.6 C -0.4 15.9 10 18.3 12.6 18.7 C 25.2 20.5 31.5 2.9 23.8 0.5 Z"
+            repeatCount="indefinite"
+            begin="-0.25s"
+            dur="3.5s"
+          />
+        </circle>
+        
+      </svg>
+    </div>
+    <div className="flex items-center  justify-center h-screen w-screen ">
+      <svg
+        width="350"
+        height="350"
+        viewBox="-5 -15 40 40"
+        xmlns="http://www.w3.org/2000/svg"
+        className="drop-shadow-[0_0_10px_rgba(0,0,0,0.5)]"
+      >
+        <defs>
+          <filter id="glow" x="-50%" y="-50%" width="400%" height="400%">
+            <feGaussianBlur stdDeviation="2" result="blur"></feGaussianBlur>
+            <feMerge>
+              <feMergeNode in="blur"></feMergeNode>
+              <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+          </filter>
+        </defs>
+
+        
+        <circle fill="#ffffffff" r="0.1" filter="url(#glow)">
+          <animateMotion
+            path="M 23.8 0.5 C 17.5 -1.4 1.4 20.9 9.9 27.3 C 14.2 30.5 21.9 22.9 23.8 17.8 C 28 7 2.1 3.3 0.4 11.6 C -0.4 15.9 10 18.3 12.6 18.7 C 25.2 20.5 31.5 2.9 23.8 0.5 Z"
+            repeatCount="indefinite"
+            dur="3.5s"
+          />
+        </circle>
+        <circle fill="#b599caff" r="0.15" filter="url(#glow)">
+          <animateMotion
+            path="M 23.8 0.5 C 17.5 -1.4 1.4 20.9 9.9 27.3 C 14.2 30.5 21.9 22.9 23.8 17.8 C 28 7 2.1 3.3 0.4 11.6 C -0.4 15.9 10 18.3 12.6 18.7 C 25.2 20.5 31.5 2.9 23.8 0.5 Z"
+            repeatCount="indefinite"
+            begin="-0.05s"
+            dur="3.5s"
+          />
+        </circle>
+        <circle fill="#925bbeff" r="0.2" filter="url(#glow)">
+          <animateMotion
+            path="M 23.8 0.5 C 17.5 -1.4 1.4 20.9 9.9 27.3 C 14.2 30.5 21.9 22.9 23.8 17.8 C 28 7 2.1 3.3 0.4 11.6 C -0.4 15.9 10 18.3 12.6 18.7 C 25.2 20.5 31.5 2.9 23.8 0.5 Z"
+            repeatCount="indefinite"
+            begin="-0.1s"
+            dur="3.5s"
+          />
+        </circle>
+        <circle fill="#68e8a3ff" r="0.25" filter="url(#glow)">
+          <animateMotion
+            path="M 23.8 0.5 C 17.5 -1.4 1.4 20.9 9.9 27.3 C 14.2 30.5 21.9 22.9 23.8 17.8 C 28 7 2.1 3.3 0.4 11.6 C -0.4 15.9 10 18.3 12.6 18.7 C 25.2 20.5 31.5 2.9 23.8 0.5 Z"
+            repeatCount="indefinite"
+            begin="-0.15s"
+            dur="3.5s"
+          />
+        </circle>
+        <circle fill="#00ffaeff" r="0.3" filter="url(#glow)">
+          <animateMotion
+            path="M 23.8 0.5 C 17.5 -1.4 1.4 20.9 9.9 27.3 C 14.2 30.5 21.9 22.9 23.8 17.8 C 28 7 2.1 3.3 0.4 11.6 C -0.4 15.9 10 18.3 12.6 18.7 C 25.2 20.5 31.5 2.9 23.8 0.5 Z"
+            repeatCount="indefinite"
+            begin="-0.2s"
+            dur="3.5s"
+          />
+        </circle>
+        <circle fill="#00b7eb" r="0.35" filter="url(#glow)">
+          <animateMotion
+            path="M 23.8 0.5 C 17.5 -1.4 1.4 20.9 9.9 27.3 C 14.2 30.5 21.9 22.9 23.8 17.8 C 28 7 2.1 3.3 0.4 11.6 C -0.4 15.9 10 18.3 12.6 18.7 C 25.2 20.5 31.5 2.9 23.8 0.5 Z"
+            repeatCount="indefinite"
+            begin="-0.25s"
+            dur="3.5s"
+          />
+        </circle>
+        
+      </svg>
+    </div>
+    <div className="flex items-center  justify-center h-screen w-screen ">
+      <svg
+        width="480"
+        height="480"
+        viewBox="-5 -5 40 40"
+        xmlns="http://www.w3.org/2000/svg"
+        className="drop-shadow-[0_0_10px_rgba(0,0,0,0.5)]"
+      >
+        <defs>
+          <filter id="glow" x="-50%" y="-50%" width="400%" height="400%">
+            <feGaussianBlur stdDeviation="2" result="blur"></feGaussianBlur>
+            <feMerge>
+              <feMergeNode in="blur"></feMergeNode>
+              <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+          </filter>
+        </defs>
+
+        
+        <circle fill="#ffffffff" r="0.1" filter="url(#glow)">
+          <animateMotion
+            path="M 23.8 0.5 C 17.5 -1.4 1.4 20.9 9.9 27.3 C 14.2 30.5 21.9 22.9 23.8 17.8 C 28 7 2.1 3.3 0.4 11.6 C -0.4 15.9 10 18.3 12.6 18.7 C 25.2 20.5 31.5 2.9 23.8 0.5 Z"
+            repeatCount="indefinite"
+            dur="3.5s"
+          />
+        </circle>
+        <circle fill="#b599caff" r="0.15" filter="url(#glow)">
+          <animateMotion
+            path="M 23.8 0.5 C 17.5 -1.4 1.4 20.9 9.9 27.3 C 14.2 30.5 21.9 22.9 23.8 17.8 C 28 7 2.1 3.3 0.4 11.6 C -0.4 15.9 10 18.3 12.6 18.7 C 25.2 20.5 31.5 2.9 23.8 0.5 Z"
+            repeatCount="indefinite"
+            begin="-0.05s"
+            dur="3.5s"
+          />
+        </circle>
+        <circle fill="#925bbeff" r="0.2" filter="url(#glow)">
+          <animateMotion
+            path="M 23.8 0.5 C 17.5 -1.4 1.4 20.9 9.9 27.3 C 14.2 30.5 21.9 22.9 23.8 17.8 C 28 7 2.1 3.3 0.4 11.6 C -0.4 15.9 10 18.3 12.6 18.7 C 25.2 20.5 31.5 2.9 23.8 0.5 Z"
+            repeatCount="indefinite"
+            begin="-0.1s"
+            dur="3.5s"
+          />
+        </circle>
+        <circle fill="#68e8a3ff" r="0.25" filter="url(#glow)">
+          <animateMotion
+            path="M 23.8 0.5 C 17.5 -1.4 1.4 20.9 9.9 27.3 C 14.2 30.5 21.9 22.9 23.8 17.8 C 28 7 2.1 3.3 0.4 11.6 C -0.4 15.9 10 18.3 12.6 18.7 C 25.2 20.5 31.5 2.9 23.8 0.5 Z"
+            repeatCount="indefinite"
+            begin="-0.15s"
+            dur="3.5s"
+          />
+        </circle>
+        <circle fill="#00ffaeff" r="0.3" filter="url(#glow)">
+          <animateMotion
+            path="M 23.8 0.5 C 17.5 -1.4 1.4 20.9 9.9 27.3 C 14.2 30.5 21.9 22.9 23.8 17.8 C 28 7 2.1 3.3 0.4 11.6 C -0.4 15.9 10 18.3 12.6 18.7 C 25.2 20.5 31.5 2.9 23.8 0.5 Z"
+            repeatCount="indefinite"
+            begin="-0.2s"
+            dur="3.5s"
+          />
+        </circle>
+        <circle fill="#00b7eb" r="0.35" filter="url(#glow)">
+          <animateMotion
+            path="M 23.8 0.5 C 17.5 -1.4 1.4 20.9 9.9 27.3 C 14.2 30.5 21.9 22.9 23.8 17.8 C 28 7 2.1 3.3 0.4 11.6 C -0.4 15.9 10 18.3 12.6 18.7 C 25.2 20.5 31.5 2.9 23.8 0.5 Z"
+            repeatCount="indefinite"
+            begin="-0.25s"
+            dur="3.5s"
+          />
+        </circle>
+        
+      </svg>
+    </div>
+    </div>
+  );
+  }
 
   return (
     <main className="mx-auto max-w-md px-6 py-16">

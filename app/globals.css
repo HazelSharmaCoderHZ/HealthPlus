@@ -315,3 +315,12 @@ html, body {
     from, to { border-color: transparent }
     50% { border-color: white }
   }
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: linear-gradient(to bottom, black, rgb(22, 22, 22));
+}
